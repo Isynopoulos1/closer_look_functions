@@ -76,3 +76,6 @@ const high5 = function () {
 };
 
 document.body.addEventListener('click', high5);
+
+//pasa el evento a los 3 elementos del array
+['isela', 'erwan', 'benito'].forEach(high5);
