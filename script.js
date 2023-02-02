@@ -117,7 +117,7 @@ const greetJonas2 = greet('hey')('jonas');
 
 // EXPECTED OUTPUT hey jonas
 
-// THE CALL AND APPLY METHODS
+// ///////////////////////THE CALL AND APPLY METHODS
 const lufthansa = {
   airline: 'Lufthansa',
   iata: 'LHSY',
@@ -158,3 +158,11 @@ const newAirline = {
   bookings: [],
 };
 book.call(newAirline, 662, 'bebe dudu');
+
+// ///////////////////////APPLY METHOD - is not used anymore in modern js but works as the same as an spread operator
+
+const flightData = [647, 'An old apply method'];
+// book.apply(newAirline, flightData);
+// console.log(newAirline);
+
+book.call(newAirline, ...flightData);
