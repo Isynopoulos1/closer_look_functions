@@ -116,3 +116,20 @@ const greet = gretting => {
 const greetJonas2 = greet('hey')('jonas');
 
 // EXPECTED OUTPUT hey jonas
+
+// THE CALL AND APPLY METHODS
+const lufthansa = {
+  airline: 'Lufthansa',
+  iata: 'LHSY',
+  bookings: [],
+  // // book: function(){}
+  book(flightNum, name) {
+    console.log(
+      `${name} airline booked a seat at ${this.airline} flight ${this.iata} ${flightNum}`
+    );
+  },
+};
+
+lufthansa.book(553, 'Isela Alarcon');
+
+//OUTPUT EXPENCTED: Isela Alarcon booked a seat at lufthansa flight LHSY 553
