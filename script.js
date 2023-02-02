@@ -133,3 +133,28 @@ const lufthansa = {
 lufthansa.book(553, 'Isela Alarcon');
 
 //OUTPUT EXPENCTED: Isela Alarcon booked a seat at lufthansa flight LHSY 553
+
+const eurowings = {
+  airline: 'eurowings',
+  iata: 'THSS',
+  bookings: [],
+};
+const book = lufthansa.book;
+console.log(book);
+
+// No va a funcionar llamar a la funcion book(23, 'isela)
+// es una copia , se vuelve una funcion y ya no un método
+
+book.call(eurowings, 445, 'erwan');
+console.log(eurowings);
+
+// también podemos hacer lo mismo llamando a la funcion lufthansa
+
+book.call(lufthansa, 445, 'benito bb');
+
+const newAirline = {
+  airline: 'the new one',
+  iata: 'TTUU',
+  bookings: [],
+};
+book.call(newAirline, 662, 'bebe dudu');
