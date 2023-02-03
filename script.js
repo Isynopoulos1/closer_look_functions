@@ -53,36 +53,36 @@
 
 // FUNCTIONS ACCEPTING CALLBACKS FUNCTIONS
 // G IS FOR GLOBAL MODIFY
-const oneWord = function (str) {
-  return str.replace(/ /g, '').toLowerCase();
-};
+// const oneWord = function (str) {
+//   return str.replace(/ /g, '').toLowerCase();
+// };
 
-//TO SWITCH THE FIRST WORD TO UPPERCASE
-const upperFirstWord = function (str) {
-  const [first, ...others] = str.split(' ');
-  return [first.toUpperCase(), ...others].join(' ');
-};
+// //TO SWITCH THE FIRST WORD TO UPPERCASE
+// const upperFirstWord = function (str) {
+//   const [first, ...others] = str.split(' ');
+//   return [first.toUpperCase(), ...others].join(' ');
+// };
 
-console.log(upperFirstWord('hola, hola'));
+// console.log(upperFirstWord('hola, hola'));
 
-// /////////////////////// HIGHER ORDER  FUNCTIONS
-const transformer = function (str, fn) {
-  console.log(`Original string: ${str}`);
-  console.log(`Transformed string: ${fn(str)}`);
-  console.log(`Transformed by: ${fn.name}`);
-};
-transformer('javascript is the best! 2', upperFirstWord);
-transformer('Javascript is the best!', oneWord);
+// // /////////////////////// HIGHER ORDER  FUNCTIONS
+// const transformer = function (str, fn) {
+//   console.log(`Original string: ${str}`);
+//   console.log(`Transformed string: ${fn(str)}`);
+//   console.log(`Transformed by: ${fn.name}`);
+// };
+// transformer('javascript is the best! 2', upperFirstWord);
+// transformer('Javascript is the best!', oneWord);
 
-//JS uses callbacks all the time
-const high5 = function () {
-  console.log('👋🏽');
-};
+// //JS uses callbacks all the time
+// const high5 = function () {
+//   console.log('👋🏽');
+// };
 
-document.body.addEventListener('click', high5);
+// document.body.addEventListener('click', high5);
 
-//pasa el evento a los 3 elementos del array
-['isela', 'erwan', 'benito'].forEach(high5);
+// //pasa el evento a los 3 elementos del array
+// ['isela', 'erwan', 'benito'].forEach(high5);
 
 // const exampleOneWorld = function (str) {
 //   return str.replace(/ /g, '').toUpperCase();
@@ -102,18 +102,18 @@ document.body.addEventListener('click', high5);
 
 // /////////////////////// CLOSURE FUNCTIONS
 
-const greet = gretting => {
-  return name => {
-    console.log(`${gretting} ${name}`);
-  };
-};
+// const greet = gretting => {
+//   return name => {
+//     console.log(`${gretting} ${name}`);
+//   };
+// };
 
 // SOLUTION 1 greet stored in a variable and assigning a name parameter
 // const greetJonas1 = greet('hey');
 // greetJonas1('jonas');
 
 // SOLUTION 2 greet stored in a variable with both parameters on it
-const greetJonas2 = greet('hey')('jonas');
+// const greetJonas2 = greet('hey')('jonas');
 
 // EXPECTED OUTPUT hey jonas
 
@@ -166,3 +166,24 @@ const flightData = [647, 'An old apply method'];
 // console.log(newAirline);
 
 book.call(newAirline, ...flightData);
+
+// ///////////////////////BIND METHOD
+
+const bookEW = book.bind(eurowings);
+const bookLT = book.bind(lufthansa);
+
+bookEW(23, 'eurowings');
+bookLT(103, 'lufthansa');
+
+// with event listeners
+
+lufthansa.planes = 300;
+
+// this function adds +1 to 300 planes
+lufthansa.buyPlane = () => {
+  console.log('THIS', this);
+  this.planes++;
+  console.log('THIS PLANES', this.planes);
+};
+
+document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane);
