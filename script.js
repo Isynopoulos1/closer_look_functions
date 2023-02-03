@@ -177,13 +177,35 @@ bookLT(103, 'lufthansa');
 
 // with event listeners
 
-lufthansa.planes = 300;
-
 // this function adds +1 to 300 planes
-lufthansa.buyPlane = () => {
-  console.log('THIS', this);
-  this.planes++;
-  console.log('THIS PLANES', this.planes);
-};
 
-document.querySelector('.buy').addEventListener('click', lufthansa.buyPlane);
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this);
+
+  this.planes++;
+};
+// lufthansa.buyPlane();
+
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// /////////////////////// PARTIAL APPLICATION
+const taxAgain = (rate, value) => value + value * rate;
+// taxAgain();
+console.log(taxAgain(0.1, 20));
+
+const vatAgain = taxAgain.bind(null, 0.23);
+//vatAgain = value => value + value * 0.23;
+console.log(vatAgain(100));
+// expected output: 123
+
+// /////////////////////// FUNCTION INSIDE OTHER FUNCTION
+const taxAgain2 = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+const vatAgain2 = taxAgain2(0.23);
+console.log(vatAgain2(100));
