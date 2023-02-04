@@ -256,6 +256,11 @@ const poll = {
       \n write option number`)
     );
     console.log(answer);
+
+    //register answer
+    typeof answer === 'number' &&
+      answer < this.answers.lenght &&
+      this.answers[answer]++;
   },
 };
 poll.registerNewAnswer();
