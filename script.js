@@ -252,8 +252,10 @@ const poll = {
   registerNewAnswer() {
     //get answer
     const answer = Number(
-      prompt(`${this.question} \n ${this.options.join('.\n')}
-      \n write option number`)
+      prompt(
+        `${this.question} \n ${this.options.join('.\n')}
+      \n write option number`
+      )
     );
     console.log(answer);
 
@@ -261,9 +263,27 @@ const poll = {
     typeof answer === 'number' &&
       answer < this.answers.lenght &&
       this.answers[answer]++;
+
+    this.displayResults();
+    this.displayResults('string');
+  },
+
+  displayResults(type = 'array') {
+    if (type === 'array') {
+      console.log(this.answers);
+    } else if (type === 'string') {
+      // poll results are 13, 2, 4, 1
+      console.log(`Poll results are ${this.answers.join(', ')}`);
+    }
   },
 };
 // poll.registerNewAnswer();
 document
   .querySelector('.poll')
   .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+poll.displayResults.call({ answers: [5, 2, 3] }, 'string');
+poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
+
+// BONUS TEST DATA 1: [5, 2, 3]
+// BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
