@@ -311,3 +311,22 @@ functionExample();
 }
 // console.log(imStuck);
 console.log(imStuck);
+
+// ///////////////////////CLOSURES
+
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount},passengers`);
+  };
+};
+const booker = secureBooking();
+
+booker(); //1 passenger
+booker(); // 2 passengers
+booker(); // 3 passengers
+
+// To know where came the closure
+console.dir(booker);
