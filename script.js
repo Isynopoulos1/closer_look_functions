@@ -287,3 +287,27 @@ poll.displayResults.call({ answers: [1, 5, 3, 9, 6, 1] }, 'string');
 
 // BONUS TEST DATA 1: [5, 2, 3]
 // BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
+
+// /////////////////////// IIFE (INMEDIATLEY INVOKE FUNCTION EXPRESSIONS)
+
+const functionExample = function () {
+  console.log('Im a function');
+};
+functionExample();
+
+// ///////////////////////to call a regular function without name
+(function () {
+  console.log('Im a function');
+})();
+
+// ///////////////////////to call an arrow function without name
+(() => console.log('Im a function'))();
+
+// /////////////////////// Scope in a private variable stored in a function
+
+{
+  //const imStuck = 'this is my secret value';
+  var imStuck = 'this is my secret value';
+}
+// console.log(imStuck);
+console.log(imStuck);
